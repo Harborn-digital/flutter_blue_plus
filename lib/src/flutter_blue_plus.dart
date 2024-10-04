@@ -548,6 +548,7 @@ class FlutterBluePlus {
 
     // keep track of characteristic values
     if (call.method == "OnCharacteristicReceived" || call.method == "OnCharacteristicWritten") {
+      print("[ROB] OnCharacteristicReceived " + call.arguments);
       var r = BmCharacteristicData.fromMap(call.arguments);
       if (r.success == true) {
         _lastChrs[r.remoteId] ??= {};
