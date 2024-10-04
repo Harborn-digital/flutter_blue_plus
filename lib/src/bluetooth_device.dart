@@ -294,10 +294,15 @@ class BluetoothDevice {
     // in order to match iOS behavior on all platforms,
     // we always listen to the Services Changed characteristic if it exists.
     if (subscribeToServicesChanged) {
+      print("[ROB] subscribeToServicesChanged");
       if (Platform.isIOS == false && Platform.isMacOS == false) {
+        print("[ROB] not iOS");
         BluetoothCharacteristic? c = _servicesChangedCharacteristic;
         if (c != null && (c.properties.notify || c.properties.indicate) && c.isNotifying == false) {
+          print("[ROB] setNotifyValue");
           await c.setNotifyValue(true);
+        } else {
+          print("[ROB] $c");
         }
       }
     }
