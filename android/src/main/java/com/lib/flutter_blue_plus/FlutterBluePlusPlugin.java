@@ -2286,8 +2286,10 @@ public class FlutterBluePlusPlugin implements
         {
             ServicePair pair = getServicePair(gatt, characteristic);
 
+            log(LogLevel.DEBUG, "[ROB] uuidStr: " + uuidStr(pair.primary));
             // GATT Service?
             if (uuidStr(pair.primary) == "1800") {
+                log(LogLevel.DEBUG, "[ROB] getUuid: " + uuidStr(characteristic.getUuid()));
 
                 // services changed
                 if (uuidStr(characteristic.getUuid()) == "2A05") {
