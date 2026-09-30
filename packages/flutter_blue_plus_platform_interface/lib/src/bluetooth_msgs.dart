@@ -215,16 +215,19 @@ class BmScanResponse {
 class BmConnectRequest {
   DeviceIdentifier remoteId;
   bool autoConnect;
+  bool clearCacheOnDisconnect;
 
   BmConnectRequest({
     required this.remoteId,
     required this.autoConnect,
+    this.clearCacheOnDisconnect = false,
   });
 
   Map<dynamic, dynamic> toMap() {
     final Map<dynamic, dynamic> data = {};
     data['remote_id'] = remoteId.str;
     data['auto_connect'] = autoConnect ? 1 : 0;
+    data['clear_cache_on_disconnect'] = clearCacheOnDisconnect ? 1 : 0;
     return data;
   }
 }
